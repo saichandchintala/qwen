@@ -1,0 +1,8 @@
+*.csv
+*.tsv
+*.tgz
+*.parquet
+*.csv.gz
+*.mp4
+*.wav
+qwen_env_311/

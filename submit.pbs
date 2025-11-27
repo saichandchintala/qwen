@@ -1,0 +1,16 @@
+########script for PBS ########
+
+#!/bin/bash
+#PBS -N pythonjob
+#PBS -e error.log
+#PBS -l select=1:ncpus=24:ngpus=1:mem=16GB
+#PBS -q GPU
+#PBS -l walltime=24:00:00
+#PBS -M saichandc@smu.edu.sg
+module load python/3.11.4
+
+cd /storage/home/saichandc/qwen
+source qwen_env_311/bin/activate
+
+python3.11 qwen_embeddings_with_transcript.py
+echo "Job ended at: $(date)"
