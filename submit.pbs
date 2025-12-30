@@ -12,5 +12,5 @@ module load python/3.11.4
 cd /storage/home/saichandc/qwen
 source qwen_env_311/bin/activate
 
-python3.11 qwen_embeddings_with_transcript.py
+python3.11 qwen_embeddings_with_transcript.py > my_progress.txt 2>&1
 echo "Job ended at: $(date)"

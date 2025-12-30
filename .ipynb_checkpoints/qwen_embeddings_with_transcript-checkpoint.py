@@ -215,6 +215,8 @@ def load_qwen():
 #     logger.info("Created %d segment(s) in %s", len(items), out_dir)
 #     return items
 
+import gc
+
 import subprocess
 import gc
 
@@ -429,6 +431,11 @@ def main():
     transcript_dict = load_transcript(TRANSCRIPT_CSV)
     logger.info("Transcript loaded in %.2f sec", time.time() - t_transcript)
 
+    # ---- Load model ----
+    t0 = time.time()
+    model, processor = load_qwen()
+    logger.info("Model + processor loaded in %.2f sec", time.time() - t0)
+
     # ---- Slice video ----
     t1 = time.time()
     try:
@@ -438,11 +445,6 @@ def main():
         raise SystemExit(e)
     logger.info("Video slicing completed in %.2f sec", time.time() - t1)
 
-    # ---- Load model ----
-    t0 = time.time()
-    model, processor = load_qwen()
-    logger.info("Model + processor loaded in %.2f sec", time.time() - t0)
-    
     # ---- Extract embeddings ----
     t2 = time.time()
     try:
