@@ -6,3 +6,5 @@
 *.mp4
 *.wav
 qwen_env_311/
+.npy
+pythonjob.*
